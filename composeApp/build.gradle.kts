@@ -33,8 +33,12 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material)
             implementation(compose.ui)
+            implementation(compose.animationGraphics)
+            implementation(compose.animation)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation("sh.calvin.autolinktext:autolinktext:1.1.1")
+            implementation("com.github.skydoves:orbital:0.4.0")
         }
     }
 }

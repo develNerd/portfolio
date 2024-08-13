@@ -44,9 +44,12 @@ fun LeftCornerBrush() {
 @Composable
 fun LeftCornerArc() {
     Canvas(
-        modifier = Modifier.size(100.dp),
+        modifier = Modifier.size(146.dp),
         onDraw = {
-            drawArc(brush = Brush.horizontalGradient(leftCornerBrush), startAngle = -90f, sweepAngle = 180f, useCenter = true)
+            translate(left = 80f) {
+                drawCircle(Brush.horizontalGradient(leftCornerBrush))
+            }
+
         }
     )
 }

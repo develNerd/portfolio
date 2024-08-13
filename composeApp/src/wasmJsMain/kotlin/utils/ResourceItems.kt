@@ -27,4 +27,8 @@ object ImageAsset {
     // add more as you implement your resources
 }
 
-val devDescription = "Isaac is a seasoned mobile engineer with over 5years of experience. He is very adaptive and  has experience with almost all mobile engineering stacks. He has experience in Native Android, Native iOS, Flutter and KMM. Doubt it :) ?  Check out his experiences here"
+val devDescription = "Isaac is a seasoned mobile engineer with over 5years of experience. " +
+        "He is very adaptive and  has experience with almost all mobile engineering stacks. " +
+        "He has experience in Native Android, Native iOS, Flutter and KMM. Doubt it :) ?  Check out his experiences here"
+
+val jobDescription = "Isaac is a responsible for all Mobile SDKs @ Telnyx, for Flutter, Android, and iOS. He occasionally works on native apps"
