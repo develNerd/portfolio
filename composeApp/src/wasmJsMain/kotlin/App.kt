@@ -24,6 +24,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import models.SkillItem
 import org.jetbrains.compose.resources.*
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -56,7 +60,7 @@ suspend fun loadFont() {
 }
 
 
-@OptIn(InternalResourceApi::class)
+@OptIn(InternalResourceApi::class, DelicateCoroutinesApi::class)
 @Composable
 fun App() {
 
@@ -84,8 +88,14 @@ fun App() {
 
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Projects() {
-                    currentProject = it
+                    currentProject = -1
+                    GlobalScope.launch {
+                        delay(10)
+                        currentProject = it
+                    }
                 }
+
+
 
                 AnimatedVisibility(visible = currentProject != -1){
                     if (currentProject != -1){
@@ -131,7 +141,7 @@ fun Footer() {
             }
 
             Box(modifier = Modifier.fillMaxWidth().background(brush = Brush.horizontalGradient(brushText)).padding(vertical = 20.dp), contentAlignment = Alignment.Center) {
-                Text(text = "© 2021 Isaac Akakpo Koku. All rights reserved", color = Color.White)
+                Text(text = "© 2024 Isaac Akakpo Koku. All rights reserved", color = Color.White)
             }
         }
 
@@ -157,6 +167,10 @@ fun ProjectDialog(project: Project, onDismissRequest: () -> Unit) {
     Box (modifier = Modifier.padding(20.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
 
+            val image by remember {
+                mutableStateOf(project.image!!)
+            }
+
             Image(painterResource(DrawableResource(id = "", items = setOf(ImageAsset.btnRight))), null, modifier = Modifier.clickable {
                 onDismissRequest()
             })
@@ -164,7 +178,7 @@ fun ProjectDialog(project: Project, onDismissRequest: () -> Unit) {
             Spacer(modifier = Modifier.size(20.dp))
 
             Box(modifier = Modifier.height(500.dp).weight(0.35f).background(brush = Brush.linearGradient(brushText)), contentAlignment = Alignment.Center) {
-                Image(painterResource(DrawableResource(id = "", items = setOf(ImageAsset.appleIcon))), null)
+                Image( painter =  painterResource(project.drawableResource!!), null, modifier = Modifier.size(60.dp))
             }
             Box(modifier = Modifier.weight(0.65f).padding(horizontal = 8.dp)) {
                 Column(modifier = Modifier.padding(10.dp),horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -349,6 +363,3 @@ fun DevName() {
     )
 
 }
-
-
-

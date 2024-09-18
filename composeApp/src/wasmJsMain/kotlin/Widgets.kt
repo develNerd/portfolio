@@ -32,6 +32,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEach
 import androidx.compose.ui.util.fastSumBy
 import kotlinx.coroutines.delay
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.InternalResourceApi
+import org.jetbrains.compose.resources.ResourceItem
 import kotlin.math.*
 import kotlin.time.Duration.Companion.milliseconds
 
@@ -89,62 +92,70 @@ val dirs:MutableList<String> = mutableListOf()
 val changes = mutableListOf<PointerInputChange>()
 val rotations = mutableListOf<Float>()
 
-data class Project(
+data class Project @OptIn(InternalResourceApi::class) constructor(
     val title: String,
     val description: String,
     val link: String? = "",
     val image: String? = "",
+    val drawableResource: DrawableResource? = null
 )
 
+@OptIn(InternalResourceApi::class, InternalResourceApi::class)
 val projects = listOf(
     Project(
         title = "ChatGPT-MULTIPLATFORM",
         description = "ChatGPT Multiplatform aims to implement all clients for CHAT GPT i.e Mobile(Android and IOS), Desktop and Web using Kotlin Multiplatform/Mobile",
         link = "https://github.com/develNerd/ChatGPT-Multiplatform",
-        image = "drawable/telnyx.png"
+        image = "drawable/chat_gpt_img.png",
+        drawableResource = DrawableResource(id = "", items = setOf(ResourceItem(setOf(), path = "drawable/chat_gpt_img.png", offset = -1, size = -1)))
     ),
     Project(
-        title = "WebRTC-Android @ Telnyx",
+        title = "Android Libraries",
         description = "WebRTC-Android is a library that allows you to make WebRTC calls from Android using Telnyx WebRTC SDK",
         link = "https://github.com/team-telnyx/telnyx-webrtc-android",
-        image = "drawable/telnyx.png"
+        image = "drawable/android_img.png",
+        drawableResource = DrawableResource(id = "", items = setOf(ResourceItem(setOf(), path = "drawable/android_img.png", offset = -1, size = -1)))
     ),
     Project(
-        title = "WebRTC-iOS @ Telnyx",
+        title = "iOS Apps",
         description = "WebRTC-iOS is a library that allows you to make WebRTC calls from iOS using Telnyx WebRTC SDK",
         link = "https://github.com/team-telnyx/telnyx-webrtc-ios",
-        image = "drawable/telnyx.png"
+        image = "drawable/ic_baseline_apple.png",
+        drawableResource = DrawableResource(id = "", items = setOf(ResourceItem(setOf(), path = "drawable/ic_baseline_apple.png", offset = -1, size = -1)))
     ),
     Project(
-        title = "Flutter Voice SDK @ Telnyx",
+        title = "Flutter Apps",
         description = "Flutter Voice SDK is a library that allows you to make Voice calls from Flutter App (ios & android) using Telnyx Voice SDK",
         link = "https://github.com/team-telnyx/flutter-voice-sdk/tree/main/android",
-        image = "drawable/telnyx.png"
+        image = "drawable/icon_flutter.png",
+        drawableResource = DrawableResource(id = "", items = setOf(ResourceItem(setOf(), path = "drawable/icon_flutter.png", offset = -1, size = -1)))
     ),
     Project(
         title = "Savit Authenticator",
         description = "Savit Authenticator is an open source Authenticator App built with Jetpack Compose deployed using Jenkins CI, built to Encourage the use Offline Time / Counter Based One Time Passwords. (This project made some references to the Open Source Google Authenticator project)"
-                ,
+        ,
         link = "https://github.com/develNerd/ChatGPT-Multiplatform",
-        image = "drawable/telnyx.png"
+        image = "drawable/ic_android_bg.png",
+        drawableResource = DrawableResource(id = "", items = setOf(ResourceItem(setOf(), path = "drawable/ic_android_bg.png", offset = -1, size = -1)))
     ),
     Project(
         title = "Space Jam",
         description = "SpaceJam is a Jetpack Compose app, built on top of clean-architecture and is featuring graphql, sqldelight, canvas api/custom UIs, navigation, material3 and many more :). SpaceJam uses SpaceX's open sourced api written with GraphQl. Enjoy all Spacex's past launches, ships, launches, next launches and many more with spacejam. NB : Still in dev.",
         link = "https://github.com/develNerd/SpaceJam",
-        image = "drawable/telnyx.png"
+        drawableResource = DrawableResource(id = "", items = setOf(ResourceItem(setOf(), path = "drawable/ic_android_bg.png", offset = -1, size = -1)))
     ),
     Project(
         title = "Android 12 Animation Clone",
         description = "This project is a clone of the Android 12 Clock Animation in the settings app. It helps provide in depth knowledge about Android's Touch Input Geometry in General.You learn how to implement Rotation related stuff using Jetpack compose with touch events" ,
         link = "https://github.com/develNerd/AnimatingCompoables",
-        image = "drawable/telnyx.png"
+        drawableResource = DrawableResource(id = "", items = setOf(ResourceItem(setOf(), path = "drawable/ic_android_bg.png", offset = -1, size = -1)))
     ),
     Project(
         title = "Therapeutic",
         description = "The app provides content having genres that relate to how our users can reduce or deal with mental health situations. These include videos on meditation, self awareness etc." ,
         link = "https://github.com/develNerd/Therapeutic",
-        image = "drawable/telnyx.png"
+        image = "drawable/android_img.png",
+        drawableResource = DrawableResource(id = "", items = setOf(ResourceItem(setOf(), path = "drawable/android_img.png", offset = -1, size = -1)))
     ),
 )
 
