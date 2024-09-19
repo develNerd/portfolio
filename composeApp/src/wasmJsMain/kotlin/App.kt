@@ -95,8 +95,6 @@ fun App() {
                     }
                 }
 
-
-
                 AnimatedVisibility(visible = currentProject != -1){
                     if (currentProject != -1){
                         ProjectDialog(projects[currentProject]) {
@@ -106,12 +104,7 @@ fun App() {
 
                 }
             }
-
             Footer()
-
-
-
-
         }
     }
 
@@ -230,7 +223,7 @@ fun HomePage() {
                 Spacer(modifier = Modifier.size(40.dp))
                 TitleComponent(title = "Mobile Engineer @ Telnyx (SDK & Apps)", linkText = "See Skills",null)
                 Text(text = devDescription, style = TextStyle(fontSize = 20.sp, color = subTextColor), modifier = Modifier.padding(end = 200.dp))
-                TitleComponent(title = "This Website is Powered and developed using ", linkText = "View Code","Kotlin Wasm (Jetpack Compose)")
+                TitleComponent(title = "This Website is Powered and developed using ", linkText = "View Code","Kotlin Wasm (Jetpack Compose)", url = "https://github.com/develNerd/portfolio")
                 Text(text = jobDescription, style = TextStyle(fontSize = 20.sp, color = subTextColor), modifier = Modifier.padding(end = 200.dp))
                 Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.BottomEnd) {
                     LeftCornerArc()
@@ -264,7 +257,7 @@ fun TitleHeader(title: String){
 
 
 @Composable
-fun TitleComponent(title: String,linkText:String, subTitle: String?) {
+fun TitleComponent(title: String,linkText:String, subTitle: String?,url: String? = null) {
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
         ToolIndicator()
         Spacer(Modifier.size(5.dp))
@@ -282,7 +275,7 @@ fun TitleComponent(title: String,linkText:String, subTitle: String?) {
                 )
             )
         }
-        LinkText(text = linkText)
+        LinkText(text = linkText, url = url)
 
     }
 }

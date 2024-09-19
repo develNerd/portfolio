@@ -1,4 +1,8 @@
-This is a Kotlin Multiplatform project targeting Web.
+A portfolio app purely written in Kotlin using Compose WASM.
+
+* The project includes an implementation of a rotating wheel which demonstrates the use of
+  geometry in kotlin. This includes pointer input implementation and a little bit of compose animations.
+
 
 * `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
   It contains several subfolders:
