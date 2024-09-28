@@ -1,5 +1,7 @@
 A portfolio app purely written in Kotlin using Compose WASM.
 
+[Site](https://develnerd.github.io/)
+
 * The project includes an implementation of a rotating wheel which demonstrates the use of
   geometry in kotlin. This includes pointer input implementation and a little bit of compose animations.
 
